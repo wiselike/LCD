@@ -229,7 +229,7 @@ bool SendLCDPacket(LPCSTR buf) {
     GetLocalTime(&st);
 	DWORD len=0, bytesWritten=0;
 	// BYTE* packet = PackLCDPacket(&st, "C57 G49 R541 T57.1 T44.5 T23.8", 2, &len);
-	BYTE* packet = PackLCDPacket(&st, "GEFORCE RTX 5080", 2, &len);
+	BYTE* packet = PackLCDPacket(&st, buf, 2, &len);
 	printf("发送数据 (%d 字节):\n", len);
     for (DWORD i = 0; i < len; i++) {
         printf("%02x ", packet[i]);

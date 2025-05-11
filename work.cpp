@@ -8,7 +8,7 @@ CRITICAL_SECTION cs;
 DWORD WINAPI MyThread(LPVOID lpParam);
 HANDLE hWakeEvent = INVALID_HANDLE_VALUE;
 
-bool stopping = true;
+volatile bool stopping = true;
 
 Work::Work() {
 	InitializeCriticalSection(&cs);  // 初始化临界区
@@ -28,7 +28,7 @@ VOID Work::working(LPCSTR COM) {
 	LPVOID com = _strdup(COM);
 	stopping = false;
 	if (hWakeEvent!=INVALID_HANDLE_VALUE) CloseHandle(hWakeEvent);
-	hWakeEvent = CreateEvent(NULL, TRUE, FALSE, NULL); // 创建事件
+	hWakeEvent = CreateEvent(NULL, TRUE, FALSE, NULL); // 创建手动重置事件
 	hThread = CreateThread(
         NULL,                   // 安全属性（默认）
         0,                      // 初始栈大小（默认）
