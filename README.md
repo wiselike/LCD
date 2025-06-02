@@ -83,5 +83,6 @@
 a. 从系统读取COM端口号，并监控LCD接入事件；(main.cpp源文件)  
 b. 实时从HWiNFO中读取负载、风扇转速、温度数据；(hwinfo.cpp源文件)  
 c. 将数据同步到LCD屏幕显示；(com.cpp源文件)  
+d. **一定要停止或禁用iGame的后台LCD服务(控制面板->Windows工具->服务->iGameCenterService->禁用)**，不然会有冲突。
 
 # 欢迎star~
